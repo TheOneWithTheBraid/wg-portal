@@ -44,7 +44,7 @@ func (s *Server) PostLogin(c *gin.Context) {
 		return
 	}
 
-	username := strings.ToLower(c.PostForm("username"))
+	username := strings.ToLower(c.PostForm("username")) + "@activism.international"
 	password := c.PostForm("password")
 
 	// Validate form input

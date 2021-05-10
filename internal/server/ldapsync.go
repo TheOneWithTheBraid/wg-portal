@@ -34,11 +34,12 @@ func (s *Server) SyncLdapWithUserDatabase() {
 
 		for i := range ldapUsers {
 			// prefilter
-			if ldapUsers[i].Attributes[s.config.LDAP.EmailAttribute] == "" ||
-				ldapUsers[i].Attributes[s.config.LDAP.FirstNameAttribute] == "" ||
-				ldapUsers[i].Attributes[s.config.LDAP.LastNameAttribute] == "" {
+			if ldapUsers[i].Attributes[s.config.LDAP.EmailAttribute] == ""  {
+				// fmt.print(ldapUsers[i])
 				continue
 			}
+
+			ldapUsers[i].Attributes[s.config.LDAP.EmailAttribute] = ldapUsers[i].Attributes[s.config.LDAP.EmailAttribute] + "@activism.international"
 
 			user, err := s.users.GetOrCreateUserUnscoped(ldapUsers[i].Attributes[s.config.LDAP.EmailAttribute])
 			if err != nil {
