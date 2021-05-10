@@ -159,7 +159,7 @@ func (provider Provider) GetUserModel(ctx *authentication.AuthContext) (*authent
 	user := &authentication.User{
 		Firstname: sr.Entries[0].GetAttributeValue(provider.config.FirstNameAttribute),
 		Lastname:  sr.Entries[0].GetAttributeValue(provider.config.LastNameAttribute),
-		Email:     sr.Entries[0].GetAttributeValue(provider.config.EmailAttribute + "@activism.international"),
+		Email:     sr.Entries[0].GetAttributeValue(provider.config.EmailAttribute) + "@activism.international",
 		Phone:     sr.Entries[0].GetAttributeValue(provider.config.PhoneAttribute),
 		IsAdmin:   false,
 	}
